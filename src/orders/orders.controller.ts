@@ -25,7 +25,7 @@ export class OrdersController {
     // would have used ApiFoundResponse - however this bug causes 200 response code to render regardless (https://github.com/nestjs/swagger/issues/1639)
     @ApiOkResponse({ description: 'Order found and returned', type: Order })
     @ApiNotFoundResponse({ description: 'Order with id not found', type: NotFoundException})
-    getOrder(@Param('id') id: number): Order | NotFoundException {
-        return this.ordersService.getPurchaseDetails(id);
+    getOrder(@Param('id') id: string): Order | NotFoundException {
+        return this.ordersService.getPurchaseDetails(parseInt(id));
     }
 }
