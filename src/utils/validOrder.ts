@@ -27,12 +27,15 @@ export const validOrder = (purchase: Purchase) => {
             error: 'Quantity of plants in order is greater than the available quantity'
         }
     } else {
+        // calculating total cost of order
+        const total = purchase.quantity * plants[plantIdx].price
+
         return {
             valid: true,
             // currently only need the plant index for updating quantity in purchase method and total cost for creating order - could pass other props back if needed like plant obj
             payload: {
                 plantIdx,
-                totalCost: purchase.quantity * plants[plantIdx].price
+                totalCost: Number(total.toFixed(2)) // setting number of decimals to 2 and converting back to number
             }
         }
     }

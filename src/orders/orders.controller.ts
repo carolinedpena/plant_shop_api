@@ -11,7 +11,7 @@ export class OrdersController {
     constructor(private readonly ordersService: OrdersService) {}
 
     // Order/Purchase a plant
-    @Post('order')
+    @Post('')
     @ApiOperation({ summary: 'Create order' })
     @ApiCreatedResponse({ description: 'New order successfully created.', type: Order })
     @ApiBadRequestResponse({ type: BadRequestException})
